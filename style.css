@@ -1,0 +1,90 @@
+/* General styling */
+div#mainContainer {
+  width: 95%;
+  margin: 4rem auto;
+  overflow: hidden;
+  border: 3px solid #f0f0f0;
+}
+@media (min-width: 768px) and (max-width: 992px){
+  div#mainContainer{width: 80%;}
+}
+@media (min-width: 993px){
+  div#mainContainer{width: 60%;}
+}
+
+.inputTaskList, .filterTaskList {
+  padding: 1rem;
+}
+.inputTaskList h3{
+  /* display: none; */
+  margin: 1rem 0;
+  color:  #2bbbad;
+  text-transform: uppercase;
+}
+.inputTaskList h3 span{
+  text-transform: capitalize;
+  color:  #000;
+}
+/* Styling Inputs */
+.input {
+  background-color: rgb(196, 227, 252, .07);
+  width: 100%;
+  height: 1.5rem;
+  border: none;
+  font-size: 1.2rem;
+  outline: none;
+  border-bottom: 1px solid #9e9e9e;
+  margin-bottom: 1.5rem;
+}
+.input:hover{
+  background-color: rgb(255, 255, 255);
+  border-bottom: 2px solid #2bbbad;
+} 
+
+/* Styling buttons and submit with class btn */
+.btn{
+  background-color: #2bbbad;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  height: 36px;
+  line-height: 36px;
+  padding: 0 2rem;
+  text-transform: uppercase;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: rgb(248, 248, 248);
+  color: #000;
+  box-shadow: 0 0px 10px  #2bbbad
+}
+
+.btnClearList{margin-top: 1rem}
+
+/* Styling UL */
+ul{
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+ul li{
+  color: red;
+  font-size: 1rem;
+  border-bottom: 1px solid #e0e0e0;
+  padding: .5rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+ul li:hover{background-color: #f0f0f0;}
+
+ul li a{
+  color: #ffab40;
+}
+
+ul li a:hover{
+  color: #f00;
+}

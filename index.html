@@ -10,35 +10,32 @@
 <body>
 <!-- The Main mainContainer -->
 <div id="mainContainer">
-  <!-- Divide The task into two parts, Inner container that holds the input Task List and inner container For filter Task List -->
-      <!-- input and add tasks-->
-      <div class="inputContainer">
-          <div class="inputTaskList">
-              <h2>Task List for Mohamed Hagras</h3>
-              <form>
-                  <input name="New Task" type="text" placeholder="New Task" class="input formInput" autofocus> <br>
-                  <input type="submit" class="btn" value="Add a Task">
-              </form>
-          </div>
-          </div>
-      <!-- Filter and remove tasks -->
-      <div class="filterContainer">
-          <div class="filterTaskList">
-              <h2>Tasks</h3>
-              <input type="text" name="filter" id="" placeholder="Filter Tasks" class="input filterInput">
-              <ul class="tasksList">
-                  <li class="taskItem">Test One
-                      <a href="#"><i class="fas fa-times"></i></a>
-                  </li>
-                  <li class="taskItem">Test Two<a href="#"><i class="fas fa-times"></i></a>
-                  </li>
-                  <li class="taskItem">Test Three<a href="#"><i class="fas fa-times"></i></a>
-                  </li>
-              </ul>
-              <button class="btn btnClearList">Clear list</button>
-          </div>
-      </div>
+<!-- Divide The task into two parts, Inner container that holds the input Task List and inner container For filter Task List -->
+  <!-- input and add tasks-->
+    <div class="inputTaskList">
+      <input name="Person name" type="text" placeholder="Kindly enter your name" class="input personNameInput" autofocus>
+      <h3>Welcome <span class="personName">person name</span></h3>
+
+      <form>
+          <input name="New Task" type="text" placeholder="New Task" class="input formInput"> <br>
+          <input type="submit" class="btn" value="Add a Task">
+      </form>
   </div>
+<!-- Filter and remove tasks -->
+    <div class="filterTaskList">
+      <h3>Tasks</h3>
+      <input type="text" name="filter" id="" placeholder="Filter Tasks" class="input filterInput">
+        <ul class="tasksList">
+            <li class="taskItem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, cum.
+                <a href="#"><i class="fas fa-times"></i></a>
+            </li>
+            <li class="taskItem">Test Two<a href="#"><i class="fas fa-times"></i></a>
+            </li>
+            <li class="taskItem">Test Three<a href="#"><i class="fas fa-times"></i></a>
+        </ul>
+        <button class="btn btnClearList">Clear list</button>
+    </div>
+    </div>
 
 <script src="app.js"></script>
 </body>
