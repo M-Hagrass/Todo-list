@@ -21,6 +21,8 @@ function runAllEventListeners(){
   btnOk.addEventListener('click', personName)
   // Add New task event
   form.addEventListener('submit', addTask)
+  // Remove tasks
+  tasksList.addEventListener('click', removeTask)
 }
 
 // Create person name function
@@ -48,4 +50,14 @@ function addTask(e){
   li.appendChild(link);
   tasksList.appendChild(li);
   formInput.value = '';
+}
+
+// Create removeTask function
+function removeTask(e){
+  e.preventDefault();
+  if(e.target.classList.contains('fa-times')){
+    if(confirm('Are you sure')){
+      e.target.parentElement.parentElement.remove();
+    }
+  }
 }
