@@ -25,6 +25,8 @@ function runAllEventListeners(){
   tasksList.addEventListener('click', removeTask)
   // Clear all tasks list
   btnClearList.addEventListener('click', clearTasks)  
+  // Filter tasks list
+  filterInput.addEventListener('keyup', filterTask)  
 }
 
 // Create person name function
@@ -39,7 +41,6 @@ function personName(){
 
 // Create addTask function
 function addTask(e){
-  console.log('hello')
   e.preventDefault();
   // Create li
   const li = document.createElement('li');
@@ -72,5 +73,17 @@ function clearTasks(){
       tasksList.removeChild(tasksList.lastChild)
     }
   }
+}
 
+// Create filterTask function
+function filterTask(e){
+  const text = e.target.value.toLowerCase();
+  document.querySelectorAll('.taskItem').forEach(function(task, index){
+    const taskContent = task.textContent.toLowerCase();
+    if(taskContent.indexOf(text) !== -1){
+      task.style.display = 'flex';
+    } else {
+      task.style.display = 'none';
+    }
+  })
 }
