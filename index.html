@@ -11,31 +11,31 @@
 <!-- The Main mainContainer -->
 <div id="mainContainer">
 <!-- Divide The task into two parts, Inner container that holds the input Task List and inner container For filter Task List -->
-  <!-- input and add tasks-->
+  <!-- input and add tasks section -->
     <div class="inputTaskList">
-      <input name="Person name" type="text" placeholder="Kindly enter your name" class="input personNameInput" autofocus>
-      <h3>Welcome <span class="personName">person name</span></h3>
-
+      <div class="PersonNameContainer">
+        <input name="Person name" type="text" placeholder="Enter Your Name" class="input personNameInput" autofocus>
+        <button class="ok btn">OK</button>
+      </div>
+      <h3 class="personNameHead">Welcome <span class="personNameSpan"></span></h3>
+      
       <form>
           <input name="New Task" type="text" placeholder="New Task" class="input formInput"> <br>
           <input type="submit" class="btn" value="Add a Task">
       </form>
-  </div>
-<!-- Filter and remove tasks -->
+    </div>
+  <!-- Filter and remove tasks section -->
     <div class="filterTaskList">
       <h3>Tasks</h3>
-      <input type="text" name="filter" id="" placeholder="Filter Tasks" class="input filterInput">
-        <ul class="tasksList">
-            <li class="taskItem">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Incidunt, cum.
-                <a href="#"><i class="fas fa-times"></i></a>
-            </li>
-            <li class="taskItem">Test Two<a href="#"><i class="fas fa-times"></i></a>
-            </li>
-            <li class="taskItem">Test Three<a href="#"><i class="fas fa-times"></i></a>
-        </ul>
-        <button class="btn btnClearList">Clear list</button>
+      <input type="text" name="filter" id="" placeholder="Search and filter on the tasks" class="input filterInput">
+      <ul class="tasksList">
+          <li class="taskItem">Test Two<a href="#"><i class="fas fa-times"></i></a></li>
+          <li class="taskItem">Test Two<a href="#"><i class="fas fa-times"></i></a></li>
+          <li class="taskItem">Test Three<a href="#"><i class="fas fa-times"></i></a></li>
+      </ul>
+      <button class="btn btnClearList">Clear list</button>
     </div>
-    </div>
+</div>
 
 <script src="app.js"></script>
 </body>
