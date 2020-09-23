@@ -6,7 +6,7 @@ const btnOk = document.querySelector('.ok');
 const PersonNameContainer = document.querySelector('.PersonNameContainer');
 const form = document.querySelector('form');
 const formInput = document.querySelector('.formInput');
-const btnClearList = document.querySelector('.btnClearList')
+const btnClearList = document.querySelector('.btnClearList');
 
 // Define Filter and remove tasks section variables
 const filterInput = document.querySelector('.filterInput');
@@ -23,6 +23,8 @@ function runAllEventListeners(){
   form.addEventListener('submit', addTask)
   // Remove tasks
   tasksList.addEventListener('click', removeTask)
+  // Clear all tasks list
+  btnClearList.addEventListener('click', clearTasks)  
 }
 
 // Create person name function
@@ -60,4 +62,15 @@ function removeTask(e){
       e.target.parentElement.parentElement.remove();
     }
   }
+}
+
+// Create clearTasks function
+function clearTasks(){
+  if(confirm('Are sure! You will lost all your tasks')){
+    // tasksList.innerHTML = '';
+    while(tasksList.lastChild){
+      tasksList.removeChild(tasksList.lastChild)
+    }
+  }
+
 }
