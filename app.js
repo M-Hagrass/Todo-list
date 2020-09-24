@@ -63,7 +63,6 @@ function getDataFromLocalStorage(){
   })
 }
 
-
 // Create addTask function
 function addTask(e){
   e.preventDefault();
@@ -99,8 +98,25 @@ function removeTask(e){
   if(e.target.classList.contains('fa-times')){
     if(confirm('Are you sure')){
       e.target.parentElement.parentElement.remove();
+      removeTasksFromLocalStorage(e.target.parentElement.parentElement);
     }
   }
+}
+
+// Create removeTasksFromLocalStorage function
+function removeTasksFromLocalStorage(taskFromLi){
+  let tasks;
+  if(localStorage.getItem('tasks') === null){
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.forEach(function(taskFromLocalStorage, index){
+    if(taskFromLi.textContent === taskFromLocalStorage){
+      tasks.splice(index, 1);
+      localStorage.setItem('tasks', JSON.stringify(tasks));
+    }
+  })
 }
 
 // Create clearTasks function
