@@ -52,7 +52,20 @@ function addTask(e){
   link.innerHTML = '<i class="fas fa-times"></i>';
   li.appendChild(link);
   tasksList.appendChild(li);
+  setTasksToLocalStorage(formInput.value);
   formInput.value = '';
+}
+
+// Create setTasksToLocalStorage function
+function setTasksToLocalStorage(task){
+  let tasks;
+  if(localStorage.getItem('tasks') === null){
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.push(task);
+  localStorage.setItem('tasks', JSON.stringify(tasks));
 }
 
 // Create removeTask function
