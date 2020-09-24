@@ -17,8 +17,10 @@ runAllEventListeners();
 
 // Assign all event listeners
 function runAllEventListeners(){
-  // Add person name event
-  btnOk.addEventListener('click', personName)
+  // Get data from local storage
+  document.addEventListener('DOMContentLoaded', getDataFromLocalStorage)
+  // Add getPersonName event
+  btnOk.addEventListener('click', getPersonName)
   // Add New task event
   form.addEventListener('submit', addTask)
   // Remove tasks
@@ -29,15 +31,38 @@ function runAllEventListeners(){
   filterInput.addEventListener('keyup', filterTask)  
 }
 
-// Create person name function
-function personName(){
-    console.log(personNameInput.value);
-    personNameSpan.innerText = '';
-    personNameSpan.appendChild(document.createTextNode(personNameInput.value));
-    personNameInput.value = '';
-    PersonNameContainer.style.display = 'none';
-    personNameHead.style.fontSize = '1.2rem';
+// Create getPersonName function
+function getPersonName(){
+  console.log(personNameInput.value);
+  personNameSpan.innerText = '';
+  personNameSpan.appendChild(document.createTextNode(personNameInput.value));
+  personNameInput.value = '';
+  PersonNameContainer.style.display = 'none';
+  personNameHead.style.fontSize = '1.2rem';
 }
+
+// Create getDataFromLocalStorage function
+function getDataFromLocalStorage(){
+  let tasks;
+  if(localStorage.getItem('tasks') === null){
+    tasks = [];
+  } else {
+    tasks = JSON.parse(localStorage.getItem('tasks'));
+  }
+  tasks.forEach(function(task){
+    // Create li
+    const li = document.createElement('li');
+    li.className = 'taskItem';
+    li.appendChild(document.createTextNode(task));
+    // Create link
+    const link = document.createElement('a');
+    link.setAttribute("href", "#");
+    link.innerHTML = '<i class="fas fa-times"></i>';
+    li.appendChild(link);
+    tasksList.appendChild(li);
+  })
+}
+
 
 // Create addTask function
 function addTask(e){
