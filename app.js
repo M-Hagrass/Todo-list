@@ -2,6 +2,7 @@
 const personNameInput = document.querySelector('.personNameInput');
 const personNameHead = document.querySelector('.personNameHead');
 const personNameSpan = document.querySelector('.personNameSpan');
+const bntPerson = document.querySelector('.bntPerson');
 const btnOk = document.querySelector('.ok');
 const PersonNameContainer = document.querySelector('.PersonNameContainer');
 const form = document.querySelector('form');
@@ -21,6 +22,9 @@ function runAllEventListeners(){
   document.addEventListener('DOMContentLoaded', getDataFromLocalStorage)
   // Add getPersonName event
   btnOk.addEventListener('click', getPersonName)
+  // personNameInput.addEventListener('keyup', getPersonName)
+  // changePersonName event
+  bntPerson.addEventListener('click', changePersonName)
   // Add New task event
   form.addEventListener('submit', addTask)
   // Remove tasks
@@ -33,12 +37,23 @@ function runAllEventListeners(){
 
 // Create getPersonName function
 function getPersonName(){
-  console.log(personNameInput.value);
-  personNameSpan.innerText = '';
-  personNameSpan.appendChild(document.createTextNode(personNameInput.value));
-  personNameInput.value = '';
-  PersonNameContainer.style.display = 'none';
-  personNameHead.style.fontSize = '1.2rem';
+  if(personNameInput.value !== ''){
+    personNameSpan.innerText = '';
+    personNameSpan.appendChild(document.createTextNode(personNameInput.value));
+    personNameInput.value = '';
+    PersonNameContainer.style.display = 'none';
+    personNameHead.style.fontSize = '1.2rem';
+    bntPerson.style.display = 'block';
+  } else {
+    alert('Enter your name first');
+  }
+}
+
+// Create changePersonName function
+function changePersonName(){
+  PersonNameContainer.style.display = 'flex';
+  personNameHead.style.fontSize = '0rem';
+  bntPerson.style.display = 'none';
 }
 
 // Create getDataFromLocalStorage function

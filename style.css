@@ -16,6 +16,13 @@ div#mainContainer {
 
 .PersonNameContainer{display: flex;}
 
+.displayPersonName{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
 .personNameHead{
   margin: 1rem 0;
   color: #2bbbad;
@@ -72,6 +79,13 @@ div#mainContainer {
 .btnClearList{margin-top: 1rem};
 
 .ok{width: 15%; padding:0px;}
+
+.bntPerson{
+  padding: 0 1rem;
+  margin-bottom: 1.5rem;
+  background-color: #9d9d9d;
+  display: none;
+}
 
 /* Styling UL */
 
