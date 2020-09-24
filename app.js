@@ -85,6 +85,8 @@ function clearTasks(){
     while(tasksList.lastChild){
       tasksList.removeChild(tasksList.lastChild)
     }
+    // Clear localStorage
+    localStorage.clear();
   }
 }
 
