@@ -13,6 +13,13 @@ const btnClearList = document.querySelector('.btnClearList');
 const filterInput = document.querySelector('.filterInput');
 const tasksList = document.querySelector('.tasksList');
 
+// Define warnings variables
+const warnings = document.querySelector('.warnings');
+const warningEmptyValue = document.querySelector('.warningEmptyValue');
+const warningDeleteTask = document.querySelector('.warningDeleteTask');
+const btnWarningsCancel = document.querySelector('.btnWarningsCancel');
+const btnConfirm = document.querySelector('.btnConfirm');
+
 // Run all event listeners
 runAllEventListeners();
 
@@ -33,6 +40,8 @@ function runAllEventListeners(){
   btnClearList.addEventListener('click', clearTasks)  
   // Filter tasks list
   filterInput.addEventListener('keyup', filterTask)  
+  // Cancel and hide warnings
+  warnings.addEventListener('click', hideWarnings)
 }
 
 // Create getPersonName function
@@ -45,7 +54,8 @@ function getPersonName(){
     personNameHead.style.fontSize = '1.2rem';
     bntPerson.style.display = 'block';
   } else {
-    alert('Enter your name first');
+    warnings.style.display = 'flex'
+    warningEmptyValue.style.display = 'flex'
   }
 }
 
@@ -81,18 +91,23 @@ function getDataFromLocalStorage(){
 // Create addTask function
 function addTask(e){
   e.preventDefault();
-  // Create li
-  const li = document.createElement('li');
-  li.className = 'taskItem';
-  li.appendChild(document.createTextNode(formInput.value));
-  // Create link
-  const link = document.createElement('a');
-  link.setAttribute("href", "#");
-  link.innerHTML = '<i class="fas fa-times"></i>';
-  li.appendChild(link);
-  tasksList.appendChild(li);
-  setTasksToLocalStorage(formInput.value);
-  formInput.value = '';
+  if(formInput.value !== ''){
+    // Create li
+    const li = document.createElement('li');
+    li.className = 'taskItem';
+    li.appendChild(document.createTextNode(formInput.value));
+    // Create link
+    const link = document.createElement('a');
+    link.setAttribute("href", "#");
+    link.innerHTML = '<i class="fas fa-times"></i>';
+    li.appendChild(link);
+    tasksList.appendChild(li);
+    setTasksToLocalStorage(formInput.value);
+    formInput.value = '';
+  } else {
+    warnings.style.display = 'flex'
+    warningEmptyValue.style.display = 'flex'
+  }
 }
 
 // Create setTasksToLocalStorage function
@@ -111,10 +126,15 @@ function setTasksToLocalStorage(task){
 function removeTask(e){
   e.preventDefault();
   if(e.target.classList.contains('fa-times')){
-    if(confirm('Are you sure')){
+    warnings.style.display = 'flex'
+    warningDeleteTask.style.display = 'flex'
+    btnConfirm.addEventListener('click',function(){
       e.target.parentElement.parentElement.remove();
+      warningEmptyValue.style.display = 'none';
+      warningDeleteTask.style.display = 'none';
+      warnings.style.display = 'none';
       removeTasksFromLocalStorage(e.target.parentElement.parentElement);
-    }
+    })
   }
 }
 
@@ -136,14 +156,21 @@ function removeTasksFromLocalStorage(taskFromLi){
 
 // Create clearTasks function
 function clearTasks(){
-  if(confirm('Are sure! You will lost all your tasks')){
+  warnings.style.display = 'flex';
+  warningDeleteTask.style.display = 'flex';
+  
+  btnConfirm.addEventListener('click',function(){
+  warningEmptyValue.style.display = 'none';
+  warningDeleteTask.style.display = 'none';
+  warnings.style.display = 'none';
+  
     // tasksList.innerHTML = '';
     while(tasksList.lastChild){
       tasksList.removeChild(tasksList.lastChild)
     }
     // Clear localStorage
     localStorage.clear();
-  }
+  })
 }
 
 // Create filterTask function
@@ -157,4 +184,13 @@ function filterTask(e){
       task.style.display = 'none';
     }
   })
+}
+
+// Create hideWarnings function
+function hideWarnings(e,task){
+  if(e.target.classList.contains('btnWarningsCancel')){
+    warningEmptyValue.style.display = 'none'
+    warningDeleteTask.style.display = 'none'
+    warnings.style.display = 'none'
+  }
 }

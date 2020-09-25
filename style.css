@@ -69,7 +69,7 @@ div#mainContainer {
 
 .warningDeleteTask{display: none;}
 
-.warningDeleteTask .btnWarnings{margin: 0 10px;}
+.warningDeleteTask .btn{margin: 0 10px;}
 
 /* input and add tasks section  */
 .inputTaskList, .filterTaskList {padding: 1rem;}
