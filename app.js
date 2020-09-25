@@ -19,6 +19,7 @@ const warningEmptyValue = document.querySelector('.warningEmptyValue');
 const warningDeleteTask = document.querySelector('.warningDeleteTask');
 const btnWarningsCancel = document.querySelector('.btnWarningsCancel');
 const btnConfirm = document.querySelector('.btnConfirm');
+const warningEmptyClearTasks = document.querySelector('.warningEmptyClearTasks');
 
 // Run all event listeners
 runAllEventListeners();
@@ -156,21 +157,26 @@ function removeTasksFromLocalStorage(taskFromLi){
 
 // Create clearTasks function
 function clearTasks(){
-  warnings.style.display = 'flex';
-  warningDeleteTask.style.display = 'flex';
-  
-  btnConfirm.addEventListener('click',function(){
-  warningEmptyValue.style.display = 'none';
-  warningDeleteTask.style.display = 'none';
-  warnings.style.display = 'none';
-  
-    // tasksList.innerHTML = '';
-    while(tasksList.lastChild){
-      tasksList.removeChild(tasksList.lastChild)
-    }
-    // Clear localStorage
-    localStorage.clear();
-  })
+  if(tasksList.innerHTML !== ""){
+    warnings.style.display = 'flex';
+    warningDeleteTask.style.display = 'flex';
+    
+    btnConfirm.addEventListener('click',function(){
+    warningEmptyValue.style.display = 'none';
+    warningDeleteTask.style.display = 'none';
+    warnings.style.display = 'none';
+    
+      // tasksList.innerHTML = '';
+      while(tasksList.lastChild){
+        tasksList.removeChild(tasksList.lastChild)
+      }
+      // Clear localStorage
+      localStorage.clear();
+    })
+  } else {
+    warnings.style.display = 'flex';
+    warningEmptyClearTasks.style.display = 'flex';
+  }
 }
 
 // Create filterTask function
