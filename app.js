@@ -162,6 +162,7 @@ function clearTasks(){
     warningDeleteTask.style.display = 'flex';
     
     btnConfirm.addEventListener('click',function(){
+    warningEmptyClearTasks.style.display = 'none';
     warningEmptyValue.style.display = 'none';
     warningDeleteTask.style.display = 'none';
     warnings.style.display = 'none';
@@ -195,6 +196,7 @@ function filterTask(e){
 // Create hideWarnings function
 function hideWarnings(e,task){
   if(e.target.classList.contains('btnWarningsCancel')){
+    warningEmptyClearTasks.style.display = 'none';
     warningEmptyValue.style.display = 'none'
     warningDeleteTask.style.display = 'none'
     warnings.style.display = 'none'
